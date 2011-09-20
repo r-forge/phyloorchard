@@ -62,16 +62,17 @@ Nature 446, 507-512(29 March 2007). doi:10.1038/nature05634}
 %%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
-data(BinindaEmondsEtAl2007)
+#not run
+#data(BinindaEmondsEtAl2007)
 #best tree as default phylo4 format:
-library(phylobase)
-best.phylo4<-BinindaEmondsEtAl2007$trees$best
+#library(phylobase)
+#best.phylo4<-BinindaEmondsEtAl2007$trees$best
 
 #best tree in ape (phylo) format:
-library(ape)
-best.phylo<-as(best.phylo4,"phylo")
+#library(ape)
+#best.phylo<-as(best.phylo4,"phylo")
 
 #plot the tree
-plot(best.phylo4,show.node.label=TRUE)
+#plot(best.phylo4,show.node.label=TRUE)
 }
 \keyword{datasets}

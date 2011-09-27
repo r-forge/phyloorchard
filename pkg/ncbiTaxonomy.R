@@ -1,7 +1,5 @@
 ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("any","species","genus","family","order","class","phylum","kingdom")) {
-  names.desired="scientific"
-  minimum.rank="phylum"
-  library("R.utils")
+   library("R.utils")
   library("phylobase")
   library("RBrownie")
   system("mkdir ncbi_taxdmp")

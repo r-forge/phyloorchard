@@ -85,7 +85,7 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
   ncbi.phylo4<-phylo4(x=phylo.matrix)
   ncbi.phylo4<-collapse.singletons(ncbi.phylo4) #make sure to add internal labels before this step
   tipLabels(ncbi.phylo4)<-tips.name
-  system("cd ..")
+  setwd("..")
   system("rm -r ncbi_taxdmp")
-  return(ncbi.phylo4)
+  return(list(tree=ncbi.phylo4,phylo.matrix=phylo.matrix,all.nodes.translation=all.nodes.translation,tips.name=tips.name))
 }

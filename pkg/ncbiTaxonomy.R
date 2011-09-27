@@ -1,16 +1,18 @@
-ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("any","species","genus","family","order","class","phylum","kingdom"))) {
-  names.desired="phylum"
-  minimum.rank="class"
+ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("any","species","genus","family","order","class","phylum","kingdom")) {
+  names.desired="scientific"
+  minimum.rank="phylum"
   library("R.utils")
   library("phylobase")
   library("RBrownie")
   system("mkdir ncbi_taxdmp")
   setwd("ncbi_taxdmp")
+  print("Downloading from NCBI...")
   pathname <- downloadFile("ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz")
+  print("Processing downloaded files...")
   system(paste(" tar -xzf ",pathname))
   system("perl -i -p -e's/[^\\w+^\\s+^\\d+^\\|+]//g' names.dmp")
   system("perl -i -p -e's/[^\\w+^\\s+^\\d+^\\|+]//g' nodes.dmp")
-
+  print("Loading into R...")
   names.dmp<-read.table("names.dmp",header=FALSE, sep="|",strip.white=TRUE,fill=TRUE,stringsAsFactors=FALSE) 
   names.dmp<-names.dmp[,1:4]
   names(names.dmp)<-c("tax_id", "name_txt", "unique_name", "name_class")
@@ -25,7 +27,7 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
   if(names.desired=="common") {
      names.pruned<-subset(names.dmp,names.dmp[,4]=="genbank common name")
   }
-  
+  print("Files successfully loaded in R")
   tree.matrix.ncbi<-merge(nodes.dmp,names.pruned,all.x=TRUE)
   tree.matrix.ncbi[,1]<-as.integer(tree.matrix.ncbi[,1])
   tree.matrix.ncbi[,2]<-as.integer(tree.matrix.ncbi[,2])
@@ -46,12 +48,12 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
     continue=TRUE
     current.node.phylo<-tip.phylo
     current.node.ncbi<-tips.translation[which(tips.translation$tips.phylo==current.node.phylo),]$tips.ncbi
-    print(paste("tip ",tip.phylo,"of ",length(tips.ncbi)))
-    print(paste("current.node.phylo=",current.node.phylo))
-    print(paste("current.node.ncbi=",current.node.ncbi))
-    print ("working")
+    print(paste("Now doing tip ",tip.phylo,"of ",length(tips.ncbi)))
+    #print(paste("current.node.phylo=",current.node.phylo))
+    #print(paste("current.node.ncbi=",current.node.ncbi))
+    #print ("working")
     while(continue) {
-      cat(".")
+      #cat(".")
       #print(paste("current.node.phylo=",current.node.phylo))
       #print(paste("current.node.ncbi=",current.node.ncbi))
       parent_tax_id.ncbi<-tree.matrix.ncbi[which(tree.matrix.ncbi$tax_id==current.node.ncbi),]$parent_tax_id
@@ -85,5 +87,7 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
   ncbi.phylo4<-phylo4(x=phylo.matrix)
   ncbi.phylo4<-collapse.singletons(ncbi.phylo4) #make sure to add internal labels before this step
   tipLabels(ncbi.phylo4)<-tips.name
-  #system("rm -r ncbi_taxdmp")
+  system("cd ..")
+  system("rm -r ncbi_taxdmp")
+  return(ncbi.phylo4)
 }

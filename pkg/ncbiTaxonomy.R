@@ -1,15 +1,50 @@
-ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("any","species","genus","family","order","class","phylum","kingdom")) {
+returnNodesWithJustOneDescendant<-function(phylo.matrix) { 
+   singleDescendantNodes<-c()
+   factors<-as.factor(phylo.matrix[,1])
+   for(i in 1:nlevels(factors)) {
+      if (length(which(factors==levels(factors)[i]))==1) {
+        singleDescendantNodes<-append(singleDescendantNodes, levels(factors)[i])
+      }
+   }
+   return(singleDescendantNodes)
+}
+
+
+pruneNodesWithOneDescendant<-function(phylo.matrix) {
+  #"ancestor first col descendent second col"
+  singleDescendantNodes<-returnNodesWithJustOneDescendant(phylo.matrix)
+  print(paste("there are ",length(singleDescendantNodes),"nodes with one descendant and ",dim(phylo.matrix)[1],"rows in phylo.matrix"))
+  while(length(singleDescendantNodes)>0) {
+    badNode<-as.integer(singleDescendantNodes[1])
+    ancestorNode<-phylo.matrix[which(phylo.matrix[,2]==badNode),1] #find the ancestor
+    if (length(ancestorNode)>0) { #if the root has one descendant, this will be false.
+      phylo.matrix[which(phylo.matrix[,1]==badNode),1]<-ancestorNode #point the descendant node to the ancestor
+      phylo.matrix<-phylo.matrix[-which(phylo.matrix[,2]==badNode),] #and delete the edge pointing the bad node
+    }
+    else {
+      phylo.matrix<-phylo.matrix[-which(phylo.matrix[,1]==badNode),] #delete the edge descended from the root node
+    }
+    phylo.matrix[which(phylo.matrix[,1]>badNode),1]<-phylo.matrix[which(phylo.matrix[,1]>badNode),1]-1 #everything has to drop down one in value
+    phylo.matrix[which(phylo.matrix[,2]>badNode),2]<-phylo.matrix[which(phylo.matrix[,2]>badNode),2]-1 #everything has to drop down one in value
+    singleDescendantNodes<-returnNodesWithJustOneDescendant(phylo.matrix)
+    print(paste("there are ",length(singleDescendantNodes),"nodes with one descendant and ",dim(phylo.matrix)[1],"rows in phylo.matrix"))
+  }
+  return(phylo.matrix)
+}
+
+ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("any","species","genus","family","order","class","phylum","kingdom"),download=TRUE) {
    library("R.utils")
   library("phylobase")
-  library("RBrownie")
-  system("mkdir ncbi_taxdmp")
-  setwd("ncbi_taxdmp")
-  print("Downloading from NCBI...")
-  pathname <- downloadFile("ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz")
-  print("Processing downloaded files...")
-  system(paste(" tar -xzf ",pathname))
-  system("perl -i -p -e's/[^\\w+^\\s+^\\d+^\\|+]//g' names.dmp")
-  system("perl -i -p -e's/[^\\w+^\\s+^\\d+^\\|+]//g' nodes.dmp")
+  if(download) {
+    system("mkdir ncbi_taxdmp")
+    setwd("ncbi_taxdmp")
+    print("Downloading from NCBI...")
+    pathname <- downloadFile("ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz")
+    print("Processing downloaded files...")
+    system(paste(" tar -xzf ",pathname))
+    system("perl -i -p -e's/[^\\w+^\\s+^\\d+^\\|+]//g' names.dmp")
+   system("perl -i -p -e's/[^\\w+^\\s+^\\d+^\\|+]//g' nodes.dmp")
+  }
   print("Loading into R...")
   names.dmp<-read.table("names.dmp",header=FALSE, sep="|",strip.white=TRUE,fill=TRUE,stringsAsFactors=FALSE) 
   names.dmp<-names.dmp[,1:4]
@@ -79,13 +114,26 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
   }
   phylo.matrix<-phylo.matrix[-1,] #remove intial values
   phylo.matrix<-phylo.matrix[order(phylo.matrix[,2]),]
-  original.root<-phylo.matrix[which(phylo.matrix[,1]==phylo.matrix[,2]),1]
-  phylo.matrix[which(phylo.matrix[,1]==phylo.matrix[,2]),1]<-0 #set root to zero for phylobase
-  all.nodes.translation[which(all.nodes.translation$nodes.phylo==original.root),1]<-0
-  ncbi.phylo4<-phylo4(x=phylo.matrix)
-  ncbi.phylo4<-collapse.singletons(ncbi.phylo4) #make sure to add internal labels before this step
-  tipLabels(ncbi.phylo4)<-tips.name
-  setwd("..")
-  system("rm -r ncbi_taxdmp")
-  return(list(tree=ncbi.phylo4,phylo.matrix=phylo.matrix,all.nodes.translation=all.nodes.translation,tips.name=tips.name))
+  phylo.matrix<-phylo.matrix[-which(phylo.matrix[,1]==phylo.matrix[,2]),] #get rid of node with itself as an ancestor
+  phylo.matrix<-pruneNodesWithOneDescendant(phylo.matrix)
+  phylo.matrix.for.ape<-phylo.matrix
+
+
+  
+  original.root.rows<-which(!phylo.matrix[,1] %in% phylo.matrix[,2])
+  original.root<-(phylo.matrix[original.root.rows,1])[1]
+  phylo.matrix<-rbind(phylo.matrix,c(0,original.root)) #set root to zero for phylobase
+   
+ 
+  ncbi.phylo4<-phylo4(x=phylo.matrix,tip.label=tips.name)
+  ncbi.phylo4<-reorder(ncbi.phylo4,order="preorder")
+    
+ # ncbi.phylo<-structure(list(edge=phylo.matrix.for.ape,tip.label=tips.name,root.edge=original.root,Nnode=dim(phylo.matrix.for.ape)[1]-length(tips.name)),class="phylo")
+  #ncbi.phylo<-reorder(ncbi.phylo)
+   ncbi.phylo<-as.phylo(as(ncbi.phylo4,"phylog"))
+  if(download) {
+    setwd("..")
+    system("rm -r ncbi_taxdmp")
+  }
+  return(list(tree.phylo4=ncbi.phylo4,tree.phylo=ncbi.phylo,phylo.matrix=phylo.matrix,tips.name=tips.name))
 }

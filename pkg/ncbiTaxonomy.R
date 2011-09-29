@@ -18,7 +18,7 @@ pruneNodesWithOneDescendant<-function(phylo.matrix) {
     badNode<-as.integer(singleDescendantNodes[1])
     ancestorNode<-phylo.matrix[which(phylo.matrix[,2]==badNode),1] #find the ancestor
     if (length(ancestorNode)>0) { #if the root has one descendant, this will be false.
-      phylo.matrix[which(phylo.matrix[,1]==badNode),1]<-ancestorNode #point the descendant node to the ancestor
+      phylo.matrix[which(phylo.matrix[,1]==badNode),1]<-ancestorNode[1] #point the descendant node to the ancestor
       phylo.matrix<-phylo.matrix[-which(phylo.matrix[,2]==badNode),] #and delete the edge pointing the bad node
     }
     else {

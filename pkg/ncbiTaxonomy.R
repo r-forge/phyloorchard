@@ -76,7 +76,8 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
   tips.name[is.na(tips.name)]<-tips.ncbi[is.na(tips.name)]
   all.nodes.translation<-tips.translation
   names(all.nodes.translation)<-c("nodes.phylo","nodes.ncbi")
-  phylo.matrix<-matrix(,nrow=1,ncol=2)
+  phylo.matrix<-matrix(,nrow=1,ncol=5)
+  names(phylo.matrix)<-c("ancestor","current","current.ncbi","current.sci.label","current.common.label")
   for (tip.phylo in 1:length(tips.ncbi)) {
     continue=TRUE
     current.node.phylo<-tip.phylo
@@ -94,7 +95,7 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
 
       if(is.na(match(parent_tax_id.ncbi,all.nodes.translation$nodes.ncbi))) {
         #print(paste("parent_tax_id.ncbi=",parent_tax_id.ncbi))
-        #print(c(1+max(c(length(tips.ncbi),max(all.nodes.translation$nodes.phylo,na.rm=TRUE)),na.rm=TRUE),parent_tax_id.ncbi))
+        print(c(1+max(c(length(tips.ncbi),max(all.nodes.translation$nodes.phylo,na.rm=TRUE)),na.rm=TRUE),parent_tax_id.ncbi))
         new.df<-data.frame(nodes.phylo=1+max(c(length(tips.ncbi),max(all.nodes.translation$nodes.phylo,na.rm=TRUE)),na.rm=TRUE),nodes.ncbi=parent_tax_id.ncbi)
         #print(new.df)
         #dput(new.df)
@@ -102,9 +103,11 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
         all.nodes.translation<-rbind(all.nodes.translation,new.df)
       }
       #print(all.nodes.translation)
+      current.node.sci.label<-names.dmp[which(names.dmp$tax_id==current.node.ncbi & names.dmp$name_class=="scientific name"),]$name_txt[1]
+      current.node.common.label<-names.dmp[which(names.dmp$tax_id==current.node.ncbi & names.dmp$name_class=="genbank common name"),]$name_txt[1]
       parent_tax_id.phylo<-all.nodes.translation[which(all.nodes.translation$nodes.ncbi==parent_tax_id.ncbi),]$nodes.phylo
-      phylo.matrix<-rbind(phylo.matrix,c(parent_tax_id.phylo,current.node.phylo))
-      #print(c(parent_tax_id.phylo,current.node.phylo))
+      phylo.matrix<-rbind(phylo.matrix,c(parent_tax_id.phylo,current.node.phylo,current.node.ncbi,current.node.sci.label,current.node.common.label))
+      print(c(parent_tax_id.phylo,current.node.phylo))
       current.node.ncbi<-parent_tax_id.ncbi
       current.node.phylo<-parent_tax_id.phylo
       if (!is.na(match(current.node.phylo,phylo.matrix[,2]))) {
@@ -113,27 +116,40 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
     }
   }
   phylo.matrix<-phylo.matrix[-1,] #remove intial values
+  phylo.matrix<-data.frame(phylo.matrix,stringsAsFactors=FALSE)
+  names(phylo.matrix)<-c("ancestor","current","current.ncbi","current.sci.label","current.common.label")
+
+  for (i in 1:3) {
+    phylo.matrix[,i]<-as.numeric(phylo.matrix[,i])
+  }
   phylo.matrix<-phylo.matrix[order(phylo.matrix[,2]),]
   phylo.matrix<-phylo.matrix[-which(phylo.matrix[,1]==phylo.matrix[,2]),] #get rid of node with itself as an ancestor
+  
   phylo.matrix<-pruneNodesWithOneDescendant(phylo.matrix)
-  phylo.matrix.for.ape<-phylo.matrix
+  #phylo.matrix.for.ape<-phylo.matrix
 
 
   
   original.root.rows<-which(!phylo.matrix[,1] %in% phylo.matrix[,2])
   original.root<-(phylo.matrix[original.root.rows,1])[1]
-  phylo.matrix<-rbind(phylo.matrix,c(0,original.root)) #set root to zero for phylobase
-   
- 
-  ncbi.phylo4<-phylo4(x=phylo.matrix,tip.label=tips.name)
+  tip.rows<-which(!phylo.matrix[,2] %in% phylo.matrix[,1])
+  phylo.matrix<-rbind(phylo.matrix,data.frame(ancestor=0,current=original.root,current.ncbi=0,current.sci.label="Life",current.common.label="Life")) #set root to zero for phylobase
+  phylo.matrix$current.common.label[which(is.na(phylo.matrix$current.common.label))]<-" "
+  phylo.matrix$current.sci.label[which(is.na(phylo.matrix$current.sci.label))]<-" "
+
+  x<-matrix(as.numeric(c(phylo.matrix[,1],phylo.matrix[,2])),ncol=2,byrow=FALSE)
+   ncbi.phylo4<-phylo4(x=x)
+   labels(ncbi.phylo4,type="tip")<-phylo.matrix$current.sci.label[tip.rows]
+   ncbi.phylo<-reorder(as.phylo(as(ncbi.phylo4,"phylog")))  #has no internal labels
+  
+  try(labels(ncbi.phylo4,type="all")<-phylo.matrix$current.sci.label)
   ncbi.phylo4<-reorder(ncbi.phylo4,order="preorder")
     
  # ncbi.phylo<-structure(list(edge=phylo.matrix.for.ape,tip.label=tips.name,root.edge=original.root,Nnode=dim(phylo.matrix.for.ape)[1]-length(tips.name)),class="phylo")
   #ncbi.phylo<-reorder(ncbi.phylo)
-   ncbi.phylo<-as.phylo(as(ncbi.phylo4,"phylog"))
   if(download) {
     setwd("..")
     system("rm -r ncbi_taxdmp")
   }
-  return(list(tree.phylo4=ncbi.phylo4,tree.phylo=ncbi.phylo,phylo.matrix=phylo.matrix,tips.name=tips.name))
+  return(list(tree.phylo4=ncbi.phylo4,tree.phylo=ncbi.phylo,phylo.matrix=phylo.matrix))
 }

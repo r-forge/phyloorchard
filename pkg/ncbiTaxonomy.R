@@ -141,15 +141,15 @@ ncbiTaxonomy<-function(names.desired=c("scientific","common"),minimum.rank=c("an
    ncbi.phylo4<-phylo4(x=x)
    labels(ncbi.phylo4,type="tip")<-phylo.matrix$current.sci.label[tip.rows]
    #ncbi.phylo<-reorder(as.phylo(as(ncbi.phylo4,"phylog")))  #has no internal labels
-  ncbi.phylo4.all.labels<-ncbi.phylo4
-  try(labels(ncbi.phylo4.all.labels,type="all")<-phylo.matrix$current.sci.label)
+  #ncbi.phylo4.all.labels<-ncbi.phylo4
+  #try(labels(ncbi.phylo4.all.labels,type="all")<-phylo.matrix$current.sci.label)
   ncbi.phylo4<-reorder(ncbi.phylo4,order="preorder")
-  ncbi.phylo4.all.labels<-reorder(ncbi.phylo4.all.labels,order="preorder")
+  #ncbi.phylo4.all.labels<-reorder(ncbi.phylo4.all.labels,order="preorder")
  # ncbi.phylo<-structure(list(edge=phylo.matrix.for.ape,tip.label=tips.name,root.edge=original.root,Nnode=dim(phylo.matrix.for.ape)[1]-length(tips.name)),class="phylo")
   #ncbi.phylo<-reorder(ncbi.phylo)
   if(download) {
     setwd("..")
     system("rm -r ncbi_taxdmp")
   }
-  return(list(tree.phylo4=ncbi.phylo4,tree.phylo4.all.labels=ncbi.phylo.all.labels,phylo.matrix=phylo.matrix))
+  return(list(tree.phylo4=ncbi.phylo4,phylo.matrix=phylo.matrix))
 }

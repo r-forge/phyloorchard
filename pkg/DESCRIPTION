@@ -2,10 +2,11 @@ Package: PhyloOrchard
 Type: Package
 Title: Important and/or useful phylogenetic datasets
 Version: 1.0
-Date: 2011-09-19
+Date: 2011-10-06
 Author: Brian C O'Meara
 Maintainer: Brian C. O'Meara <omeara.brian@gmail.com>
 Depends: phylobase
-Description: This has trees, source data, and character data of broad utility for phylogenetics. Note that it deliberately does not duplicate much data already in TreeBase. Make sure to cite the original source of the tree/data!
+Recommends: rtreebase
+Description: This has trees, source data, and character data of broad utility for phylogenetics. Make sure to cite the original source of the tree/data!
 License: GPL (>= 2)
 LazyLoad: yes

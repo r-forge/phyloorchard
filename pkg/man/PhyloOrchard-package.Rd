@@ -25,10 +25,9 @@ Brian C. O'Meara
 Maintainer:
 Brian C. O'Meara <omeara.brian@gmail.com>
 }
-\references{
-}
 \keyword{ package }
 \seealso{
+rtreebase
 }
 \examples{
 #not run

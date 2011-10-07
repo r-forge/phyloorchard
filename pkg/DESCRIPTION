@@ -1,7 +1,7 @@
 Package: PhyloOrchard
 Type: Package
 Title: Important and/or useful phylogenetic datasets
-Version: 1.0
+Version: 0.1
 Date: 2011-10-06
 Author: Brian C O'Meara
 Maintainer: Brian C. O'Meara <omeara.brian@gmail.com>

@@ -5,7 +5,7 @@
 Smith et al. 2011 angiosperm tree
 }
 \description{
-This has the best (SmithEtAl2011$trees$best) likelihood topology. The tree is in phylo4 format.
+This has the best (SmithEtAl2011_tree) likelihood topology. The tree is in phylo (ape) format.
 }
 \usage{data(SmithEtAl2011)}
 \details{
@@ -18,15 +18,11 @@ Smith SA, Beaulieu JM, Stamatakis A, Donoghue MJ (2011) Data from: Understanding
 \examples{
 #not run
 #data(SmithEtAl2011)
-#best tree as default phylo4 format:
-#library(phylobase)
-#best.phylo4<-SmithEtAl2011$trees$best
 
-#best tree in ape (phylo) format:
 #library(ape)
-#best.phylo<-as(best.phylo4,"phylo")
+#angTree<-SmithEtAl2011_tree
 
 #plot the tree
-#plot(best.phylo4,show.node.label=TRUE)
+#plot(angTree,show.node.label=TRUE)
 }
 \keyword{datasets}

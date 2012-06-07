@@ -5,7 +5,7 @@
 Eastman et al. unpublished tree of salamanders
 }
 \description{
-This has a single timetree of salamanders (EastmanEtAlUnpublished$trees$best). The tree is in phylo4 format.
+This has a single timetree of salamanders (EastmanEtAlUnpublished_tree). The tree is in phylo (ape) format.
 }
 \usage{data(EastmanEtAlUnpublished)}
 \details{
@@ -17,15 +17,7 @@ Tree is unpublished, contact Jon Eastman for more information}
 \examples{
 #not run
 #data(EastmanEtAlUnpublished)
-#best tree as default phylo4 format:
-#library(phylobase)
-#best.phylo4<-EastmanEtAlUnpublished$trees$best
-
-#best tree in ape (phylo) format:
-#library(ape)
-#best.phylo<-as(best.phylo4,"phylo")
-
-#plot the tree
-#plot(best.phylo4,show.node.label=TRUE)
+#salamanderTree<-EastmanEtAlUnpublished_tree
+#plot(salamanderTree,show.node.label=TRUE)
 }
 \keyword{datasets}

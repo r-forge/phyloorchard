@@ -5,7 +5,7 @@
 Jaffe et al. 2011 tree of turtles
 }
 \description{
-This has a single timetree (JaffeEtAl2011$trees$best) from this paper. The tree is in phylo4 format.
+This has a single timetree (JaffeEtAl2011_tree) from this paper. The tree is in phylo4 format.
 }
 \usage{data(JaffeEtAl2011)}
 \details{
@@ -18,15 +18,8 @@ Jaffe, A. L., G. J. Slater, and M. E. Alfaro. The evolution of island gigantism 
 \examples{
 #not run
 #data(JaffeEtAl2011)
-#best tree as default phylo4 format:
-#library(phylobase)
-#best.phylo4<-JaffeEtAl2011$trees$best
-
-#best tree in ape (phylo) format:
-#library(ape)
-#best.phylo<-as(best.phylo4,"phylo")
-
+#turtleTree<-JaffeEtAl2011_tree
 #plot the tree
-#plot(best.phylo4,show.node.label=TRUE)
+#plot(turtleTree,show.node.label=TRUE)
 }
 \keyword{datasets}

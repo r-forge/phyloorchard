@@ -5,7 +5,7 @@
 Bergmann and Irschick 2012 tree of squamates
 }
 \description{
-This has a single timetree (BergmannEtAl2012$trees$best) from this paper. The tree is in phylo4 format.
+This has a single timetree (BergmannEtAl2012_tree) from this paper. The tree is in phylo (ape) format.
 }
 \usage{data(BergmannEtAl2012)}
 \details{
@@ -18,15 +18,9 @@ Bergmann, P. J. and D. J. Irschick. Vertebral evolution and the diversification 
 \examples{
 #not run
 #data(BergmannEtAl2012)
-#best tree as default phylo4 format:
-#library(phylobase)
-#best.phylo4<-BergmannEtAl2012$trees$best
-
-#best tree in ape (phylo) format:
-#library(ape)
-#best.phylo<-as(best.phylo4,"phylo")
+#best.phylo4<-BergmannEtAl2012_tree
 
 #plot the tree
-#plot(best.phylo4,show.node.label=TRUE)
+#plot(BergmannEtAl2012_tree,show.node.label=TRUE)
 }
 \keyword{datasets}

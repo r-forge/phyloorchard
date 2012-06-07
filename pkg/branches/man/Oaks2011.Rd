@@ -5,7 +5,7 @@
 Oakes 2011 tree of crocodylians
 }
 \description{
-This has a single timetree (Oaks2011$trees$best) from this paper. The tree is in phylo4 format.
+This has a single timetree (Oaks2011_tree) from this paper. The tree is in phylo4 format.
 }
 \usage{data(Oaks2011)}
 \details{
@@ -19,15 +19,9 @@ radiation of the true crocodyles. Evolution 11: 3285-3297.
 \examples{
 #not run
 #data(Oaks2011)
-#best tree as default phylo4 format:
-#library(phylobase)
-#best.phylo4<-Oaks2011$trees$best
-
-#best tree in ape (phylo) format:
-#library(ape)
-#best.phylo<-as(best.phylo4,"phylo")
-
+#crocTree<-Oaks2011_tree
 #plot the tree
-#plot(best.phylo4,show.node.label=TRUE)
+#plot(crocTree,show.node.label=TRUE)
+
 }
 \keyword{datasets}

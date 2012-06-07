@@ -3,7 +3,7 @@ Type: Package
 Title: Important and/or useful phylogenetic datasets
 Version: 0.1
 Date: 2011-10-06
-Author: Brian C O'Meara
+Author: Brian C O'Meara, Luke Harmon, Jon Eastman
 Maintainer: Brian C. O'Meara <omeara.brian@gmail.com>
 Depends: phylobase
 Recommends: rtreebase

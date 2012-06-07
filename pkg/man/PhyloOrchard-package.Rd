@@ -13,14 +13,14 @@ Description: This has trees, source data, and character data of broad utility fo
 Package: \tab PhyloOrchard\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2011-09-19\cr
+Date: \tab 2012-06-07\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
 You will typically use data(dataset.name) to load the data. Trees will be in dataset.name$trees. 
 }
 \author{
-Brian C. O'Meara
+Brian C. O'Meara, Luke Harmon, Jon Eastman
 
 Maintainer:
 Brian C. O'Meara <omeara.brian@gmail.com>

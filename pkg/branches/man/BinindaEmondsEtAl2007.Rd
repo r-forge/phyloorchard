@@ -5,7 +5,7 @@
 Bininda-Emonds et al. 2007 mammal supertree (corrected)
 }
 \description{
-This has the best (BinindaEmondsEtAl2007_tree), upper (BinindaEmondsEtAl2007_upper), and lower (BinindaEmondsEtAl2007_lower) estimates of branch lengths from this paper. Note that these trees are the corrected ones, not the original ones. The trees are in phylo (ape) format.
+This has the best (BinindaEmondsEtAl2007_tree), upper (BinindaEmondsEtAl2007_upper), and lower (BinindaEmondsEtAl2007_lower) estimates of branch lengths from this paper. Note that these trees are the corrected ones, not the original ones. The trees are in phylo (\pkg{ape}) format.
 }
 \usage{data(BinindaEmondsEtAl2007)}
 \details{

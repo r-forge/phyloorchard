@@ -5,7 +5,7 @@
 Alfaro et al. 2009 tree of gnathostomes
 }
 \description{
-This has a single timetree (AlfaroEtAl2009_tree) from this paper. The tree is in phylo (ape) format.
+This has a single timetree (AlfaroEtAl2009_tree) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(AlfaroEtAl2009)}
 \details{

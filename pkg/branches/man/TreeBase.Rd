@@ -11,10 +11,11 @@ This has the the trees from TreeBase as of Oct. 5, 2011. They were downloaded us
 }
 \usage{data(TreeBase)}
 \details{
-This has the tree files from TreeBase. Note that they are stored in phylo format (ape has a MultiPhylo class that phylobase still lacks).  The files are stored in a list. Each element in the list is one study. Each element of the list is itself a list, containing information such as the study id, year of publication, authors, and other citation information. You should cite the authors of the study, especially if a single tree is being reused (as opposed to, say, looking at the distribution of tree balance across thousands of studies). The trees themselves are in the $trees object in each list: TreeBase[[1]]$trees has the MultiPhylo object containing tree(s) from the first study. 
+This has the tree files from TreeBase. Note that they are stored in phylo (\pkg{ape}) format.  The files are stored in a list. Each element in the list is one study. Each element of the list is itself a list, containing information such as the study id, year of publication, authors, and other citation information. You should cite the authors of the study, especially if a single tree is being reused (as opposed to, say, looking at the distribution of tree balance across thousands of studies). The trees themselves are in the $trees object in each list: TreeBase[[1]]$trees has the MultiPhylo object containing tree(s) from the first study. 
 }
 \source{
 TreeBase: http://www.treebase.org/
+}
 \references{
 }
 \examples{

@@ -5,7 +5,7 @@
 Eastman et al. unpublished tree of salamanders
 }
 \description{
-This has a single timetree of salamanders (EastmanEtAlUnpublished_tree). The tree is in phylo (ape) format.
+This has a single timetree of salamanders (EastmanEtAlUnpublished_tree). The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(EastmanEtAlUnpublished)}
 \details{

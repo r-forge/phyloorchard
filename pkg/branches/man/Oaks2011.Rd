@@ -5,7 +5,7 @@
 Oakes 2011 tree of crocodylians
 }
 \description{
-This has a single timetree (Oaks2011_tree) from this paper. The tree is in phylo4 format.
+This has a single timetree (Oaks2011_tree) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(Oaks2011)}
 \details{

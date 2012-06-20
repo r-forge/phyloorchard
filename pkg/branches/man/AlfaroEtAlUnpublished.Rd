@@ -5,7 +5,7 @@
 Alfaro et al. unpublished tree of fish
 }
 \description{
-This has a single timetree of fish (AlfaroEtAlUnpublished_tree). The tree is in phylo (ape) format.
+This has a single timetree of fish (AlfaroEtAlUnpublished_tree). The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(AlfaroEtAl2009)}
 \details{

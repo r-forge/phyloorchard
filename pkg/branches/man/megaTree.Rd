@@ -5,7 +5,7 @@
 Giant glomogram of vertebrates. Use at your own risk.
 }
 \description{
-This has a single timetree of ~15,000 vertebrates (megaTree_tree). The tree is in phylo4 format.
+This has a single timetree of ~15,000 vertebrates (megaTree_tree). The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(megaTree)}
 \details{

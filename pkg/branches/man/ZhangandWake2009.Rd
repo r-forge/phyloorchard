@@ -5,7 +5,7 @@
 Zhang and Wake 2009 tree of caecilians. This tree is a bit of an outlier here as it is not that big and also not species-level.
 }
 \description{
-This has a single timetree (ZhangandWake2009$trees$best) from this paper. The tree is in phylo4 format.
+This has a single timetree (ZhangandWake2009$trees$best) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(ZhangandWake2009)}
 \details{

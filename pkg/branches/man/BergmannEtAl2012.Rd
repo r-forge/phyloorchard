@@ -5,7 +5,7 @@
 Bergmann and Irschick 2012 tree of squamates
 }
 \description{
-This has a single timetree (BergmannEtAl2012_tree) from this paper. The tree is in phylo (ape) format.
+This has a single timetree (BergmannEtAl2012_tree) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(BergmannEtAl2012)}
 \details{

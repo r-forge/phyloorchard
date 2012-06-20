@@ -5,7 +5,7 @@
 Jaffe et al. 2011 tree of turtles
 }
 \description{
-This has a single timetree (JaffeEtAl2011_tree) from this paper. The tree is in phylo4 format.
+This has a single timetree (JaffeEtAl2011_tree) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(JaffeEtAl2011)}
 \details{

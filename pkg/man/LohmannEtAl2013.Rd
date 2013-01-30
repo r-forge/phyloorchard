@@ -12,7 +12,7 @@ This has a single chronogram (LohmannEtAl2013) from this paper. The tree is in p
 Make sure to cite the paper below when you use this dataset.
 }
 \source{
-Lohmann L.G., Bell C., Calió M., & Winkworth R.C. 2013. Pattern and timing of biogeographic history in the Neotropical tribe Bignonieae (Bignoniaceae). Botanical Journal of the Linnean Society, 171(1): 154-170.
+Lohmann L.G., Bell C., Calio M., & Winkworth R.C. 2013. Pattern and timing of biogeographic history in the Neotropical tribe Bignonieae (Bignoniaceae). Botanical Journal of the Linnean Society, 171(1): 154-170.
 }
 
 \examples{

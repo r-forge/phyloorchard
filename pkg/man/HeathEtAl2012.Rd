@@ -5,7 +5,7 @@
 Heath et al. 2012 trees of cute-looking mouse lemurs.
 }
 \description{
-This is a set of 20,000 phylogenetic trees in phylo (\pkg{ape}) format. 
+This is a set of 20,000 phylogenetic trees in multiphylo (\pkg{ape}) format. 
 }
 \usage{data(HeathEtAl2012)}
 \details{

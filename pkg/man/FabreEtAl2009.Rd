@@ -5,7 +5,7 @@
 Fabre et al. 2009 primate tree
 }
 \description{
-This has a single timetree (FabreEtAl2009$trees$best) from this paper. The tree is in phylo format. Note the dryad file for this paper (doi:10.5061/dryad.8492) also includes a larger tree with congeners missing from the analysis attached at the MRCA of their congeners; this tree has just the 273 taxa for which there was data.
+This has a single chronogram (FabreEtAl2009) from this paper. The tree is in phylo format. Note the dryad file for this paper (doi:10.5061/dryad.8492) also includes a larger tree with congeners missing from the analysis attached at the MRCA of their congeners; this tree has just the 273 taxa for which there was data.
 }
 \usage{data(FabreEtAl2009)}
 \details{
@@ -18,6 +18,6 @@ Fabre P, Rodrigues A, Douzery EJP. 2009. Patterns of macroevolution among Primat
 \examples{
 #not run
 #data(FabreEtAl2009)
-#plot(FabreEtAl2009$trees$best,show.node.label=TRUE)
+#plot(FabreEtAl2009,show.node.label=TRUE)
 }
 \keyword{datasets}

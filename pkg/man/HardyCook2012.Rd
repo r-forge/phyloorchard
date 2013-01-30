@@ -18,6 +18,6 @@ Hardy NB, Cook LG. 2012. Testing for ecological limitation of diversification: a
 \examples{
 #not run
 #data(HardyCook2012)
-#plot(HardyCook2012$trees$best,show.node.label=TRUE)
+#plot(HardyCook2012,show.node.label=TRUE)
 }
 \keyword{datasets}

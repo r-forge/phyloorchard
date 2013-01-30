@@ -18,7 +18,7 @@ Jaffe, A. L., G. J. Slater, and M. E. Alfaro. The evolution of island gigantism 
 \examples{
 #not run
 #data(JaffeEtAl2011)
-#turtleTree<-JaffeEtAl2011_tree
+#turtleTree<-JaffeEtAl2011
 #plot the tree
 #plot(turtleTree,show.node.label=TRUE)
 }

@@ -8,7 +8,7 @@
 Trees of coral reef fishes
 }
 \description{
-This has four different groups, with a chronogram for each: Labridae2011, Pomacentridae2011, Chaetodontidae2011, Apogonidae2011. The trees are in $trees$best for each dataset.
+This has four different groups, with a chronogram for each: Labridae2011, Pomacentridae2011, Chaetodontidae2011, Apogonidae2011.
 }
 \usage{data(Labridae2011)}
 \details{
@@ -21,6 +21,6 @@ Cowman PF, Bellwood DR. 2011. Coral reefs as drivers of cladogenesis: expanding 
 \examples{
 #not run
 #data(Pomacentridae2011)
-#plot(Pomacentridae2011$trees$best,show.node.label=TRUE)
+#plot(Pomacentridae2011,show.node.label=TRUE)
 }
 \keyword{datasets}

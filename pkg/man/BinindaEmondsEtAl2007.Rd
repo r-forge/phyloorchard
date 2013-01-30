@@ -5,7 +5,7 @@
 Bininda-Emonds et al. 2007 mammal supertree (corrected)
 }
 \description{
-This has the best (BinindaEmondsEtAl2007_tree), upper (BinindaEmondsEtAl2007_upper), and lower (BinindaEmondsEtAl2007_lower) estimates of branch lengths from this paper. Note that these trees are the corrected ones, not the original ones. The trees are in phylo (\pkg{ape}) format.
+This has the best (BinindaEmondsEtAl2007[[1]]), upper (BinindaEmondsEtAl2007[[2]]), and lower (BinindaEmondsEtAl2007[[3]]) estimates of branch lengths from this paper. Note that these trees are the corrected ones, not the original ones. The trees are in phylo (\pkg{ape}) format.
 }
 \usage{data(BinindaEmondsEtAl2007)}
 \details{
@@ -18,7 +18,7 @@ Nature 446, 507-512(29 March 2007). doi:10.1038/nature05634}
 \examples{
 #not run
 #data(BinindaEmondsEtAl2007)
-#mammalTree<-BinindaEmondsEtAl2007_tree
+#mammalTree<-BinindaEmondsEtAl2007[[1]]
 
 #plot the tree
 #plot(mammalTree,show.node.label=TRUE)

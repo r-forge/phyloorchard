@@ -5,7 +5,7 @@
 Alfaro et al. 2009 tree of gnathostomes
 }
 \description{
-This has a single timetree (AlfaroEtAl2009_tree) from this paper. The tree is in phylo (\pkg{ape}) format.
+This has a single timetree (AlfaroEtAl2009) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(AlfaroEtAl2009)}
 \details{
@@ -20,7 +20,7 @@ in jawed vertebrates. PNAS 106:13410-13414.
 \examples{
 #not run
 #data(AlfaroEtAl2009)
-#AlfaroTree<-AlfaroEtAl2009_tree
+#AlfaroTree<-AlfaroEtAl2009
 
 #plot the tree
 #plot(AlfaroTree,show.node.label=TRUE)

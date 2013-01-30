@@ -5,7 +5,7 @@
 Pyron tree of Lissamphibia, including fossil taxa
 }
 \description{
-This has two trees made by BEAST, one with a single clock, the other with two clocks. Note that some of the terminal taxa are NOT extant, so the tree is a chronogram but not ultrametric}
+This has two trees made by BEAST, one with a single clock (Pyron2011[[1]]), the other with two clocks (Pyron2011[[2]]). Note that some of the terminal taxa are NOT extant, so the tree is a chronogram but not ultrametric}
 \usage{data(Pyron2011)}
 \details{
 Make sure to cite the paper below when you use this dataset.
@@ -17,6 +17,6 @@ Pyron RA. 2011. Divergence time estimation using fossils as terminal taxa and th
 \examples{
 #not run
 #data(Pyron2011)
-#plot(Pyron2011$trees$two.clock,show.node.label=TRUE)
+#plot(Pyron2011[[1]],show.node.label=TRUE)
 }
 \keyword{datasets}

@@ -5,7 +5,7 @@
 Lohmann et al. 2013 tree of Bignonieae
 }
 \description{
-This has a single timetree (LohmannEtAl2013$trees$best) from this paper. The tree is in phylo format.
+This has a single chronogram (LohmannEtAl2013) from this paper. The tree is in phylo format.
 }
 \usage{data(LohmannEtAl2013)}
 \details{
@@ -18,6 +18,6 @@ Lohmann L.G., Bell C., Calió M., & Winkworth R.C. 2013. Pattern and timing of b
 \examples{
 #not run
 #data(LohmannEtAl2013)
-#plot(LohmannEtAl2013$trees$best,show.node.label=TRUE)
+#plot(LohmannEtAl2013,show.node.label=TRUE)
 }
 \keyword{datasets}

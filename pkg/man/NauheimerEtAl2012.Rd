@@ -5,7 +5,7 @@
 Nauheimer et al. 2012 tree of Araceae
 }
 \description{
-This has a single timetree (NauheimerEtAl2012$trees$best) from this paper. The tree is in phylo format.
+This has a single chronogram (NauheimerEtAl2012$trees$best) from this paper. The tree is in phylo format.
 }
 \usage{data(NauheimerEtAl2012)}
 \details{
@@ -18,6 +18,6 @@ Nauheimer L., Metzler D., & Renner S.S. 2012. Global history of the ancient mono
 \examples{
 #not run
 #data(NauheimerEtAl2012)
-#plot(NauheimerEtAl2012$trees$best,show.node.label=TRUE)
+#plot(NauheimerEtAl2012,show.node.label=TRUE)
 }
 \keyword{datasets}

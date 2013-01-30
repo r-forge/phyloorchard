@@ -18,7 +18,7 @@ Pyron, R. A. and J. J. Wiens. 2011. A large-scale phylogeny of Amphibia includin
 \examples{
 #not run
 #data(PyronWiens2011)
-#amphibianTree<-PyronWiens2011_tree
+#amphibianTree<-PyronWiens2011
 #plot the tree
 #plot(amphibianTree,show.node.label=TRUE)
 }

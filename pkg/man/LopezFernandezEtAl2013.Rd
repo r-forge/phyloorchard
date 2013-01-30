@@ -5,7 +5,7 @@
 Lopez-Fernandez et al. 2013 Neotropical cichlids
 }
 \description{
-This has 1000 BEAST chronograms for Neotropical cichlids. They are stored in a multiphylo object at LopezFernandezEtAl2013$trees.
+This has 1000 BEAST chronograms for Neotropical cichlids. They are stored in a multiphylo object.
 }
 \usage{data(LopezFernandezEtAl2013)}
 \details{
@@ -18,6 +18,6 @@ Pyron RA. 2011. Divergence time estimation using fossils as terminal taxa and th
 \examples{
 #not run
 #data(LopezFernandezEtAl2013)
-#plot(LopezFernandezEtAl2013$trees[17],show.node.label=TRUE)
+#plot(LopezFernandezEtAl2013[[17]],show.node.label=TRUE)
 }
 \keyword{datasets}

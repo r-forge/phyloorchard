@@ -5,7 +5,7 @@
 Zhang and Wake 2009 tree of caecilians. This tree is a bit of an outlier here as it is not that big and also not species-level.
 }
 \description{
-This has a single timetree (ZhangandWake2009$trees$best) from this paper. The tree is in phylo (\pkg{ape}) format.
+This has a single timetree (ZhangandWake2009) from this paper. The tree is in phylo (\pkg{ape}) format.
 }
 \usage{data(ZhangandWake2009)}
 \details{
@@ -18,15 +18,8 @@ Zhang, P. and M. H. Wake. 2009. Mitogenomic perspective on the phylogeny and bio
 \examples{
 #not run
 #data(ZhangandWake2009)
-#best tree as default phylo4 format:
-#library(phylobase)
-#best.phylo4<-ZhangandWake2009$trees$best
-
-#best tree in ape (phylo) format:
 #library(ape)
-#best.phylo<-as(best.phylo4,"phylo")
-
 #plot the tree
-#plot(best.phylo4,show.node.label=TRUE)
+#plot(ZhangandWake2009,show.node.label=TRUE)
 }
 \keyword{datasets}

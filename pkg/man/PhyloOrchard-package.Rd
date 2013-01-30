@@ -12,7 +12,7 @@ Description: This has chronograms (trees with branch lengths proportional to tim
 \tabular{ll}{
 Package: \tab PhyloOrchard\cr
 Type: \tab Package\cr
-Version: \tab 0.2\cr
+Version: \tab 0.3\cr
 Date: \tab 2012-01-30\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr

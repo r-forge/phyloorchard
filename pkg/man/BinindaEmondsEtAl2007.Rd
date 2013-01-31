@@ -12,8 +12,8 @@ This has the best (BinindaEmondsEtAl2007[[1]]), upper (BinindaEmondsEtAl2007[[2]
 Make sure to cite the paper below when you use this dataset.
 }
 \source{
-Olaf R. P. Bininda-Emonds, Marcel Cardillo, Kate E. Jones, Ross D. E. MacPhee, Robin M. D. Beck, Richard Grenyer, Samantha A. Price, Rutger A. Vos, John L. Gittleman & Andy Purvis. "The delayed rise of present-day mammals"
-Nature 446, 507-512(29 March 2007). doi:10.1038/nature05634}
+Olaf R. P. Bininda-Emonds, Marcel Cardillo, Kate E. Jones, Ross D. E. MacPhee, Robin M. D. Beck, Richard Grenyer, Samantha A. Price, Rutger A. Vos, John L. Gittleman & Andy Purvis. "The delayed rise of present-day mammals" Nature 446, 507-512(29 March 2007). doi:10.1038/nature05634
+}
 
 \examples{
 #not run
